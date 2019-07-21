@@ -15,6 +15,7 @@ const sass = require('gulp-sass');
 const minifyCSS = require('gulp-csso');
 const cleanCSS     = require('gulp-clean-css');
 const postcss = require('gulp-postcss');
+const cssbeautify = require('gulp-cssbeautify');
 // const cssnext = require('postcss-cssnext');
 //  REQUIRES _ JS (javascripts)
 const ts = require('gulp-typescript');
@@ -22,6 +23,7 @@ const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const plumber = require('gulp-plumber');
+const rigger  = require('gulp-rigger');
 const coffee = require('gulp-coffee');
 //  REQUIRES _ UTILS
 const autoprefixer = require('gulp-autoprefixer');
@@ -44,9 +46,18 @@ const CONF = {
         SOURCE : './src',
         OUTPUT : './public',
     },
+    FONTS :{
+      SOURCE : './src/fonts/**/*.*',
+      OUTPUT : './public/assets/fonts',
+    },  
+    IMG :{
+      // SOURCE : './src/img/*',
+      SOURCE : './src/img/**/*.{gif,jpg,jpeg,png,svg}',
+      OUTPUT : './public/assets/img',
+    }, 
     SASS : {
-        SOURCE : './src/css/**/*.scss',
-        // SOURCE : './src/css/**/*.{sass,scss}',
+        // SOURCE : './src/css/**/*.scss',
+        SOURCE : './src/css/**/*.{sass,scss}',
         OUTPUT : './public/assets/css',
     },
     STYL : {
@@ -62,7 +73,7 @@ const CONF = {
       OUTPUT : './public/assets/js',
     },
     LIBS: {
-      SOURCE : './src/libs',
+      SOURCE : './src/libs/**/*.{css,js}',
       OUTPUT : './public/assets/libs',     
     },
     PHP : {
@@ -84,11 +95,6 @@ const CONF = {
             PAGES: './src/views/pages/*.hbs',
             PARTIALS: './src/views/partials',
         }
-    },
-    IMG :{
-      // SOURCE : './src/img/*',
-      SOURCE : './src/img/**/*.{gif,jpg,jpeg,png,svg}',
-      OUTPUT : './public/assets/img',
     },
     BROWSERSYNC : {
         DOCUMENT_ROOT : './public',
@@ -123,6 +129,9 @@ const browserSyncOption = {
 
 // -------------  CLEAN
 // gulp.task('clean', () => del(CONF.GLOBAL.OUTPUT));
+// function cleanConf() {
+// 	return del(CONF.GLOBAL.OUTPUT);
+// }
 
 // -------------  HBS _ HTML
 // 
@@ -152,12 +161,12 @@ function handlebarsConfig() {
 
 // function pugConfig() {
 //     return src(CONF.PUG.SOURCE)
-//       .pipe(
-//         plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })
-//       )
+//       // .pipe(
+//       //   plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })
+//       // )
 //       .pipe(pug
 //         ({
-//           basedir: 'src',
+//           // basedir: 'src',
 //           pretty: true,
 //         })
 //       )
@@ -206,6 +215,7 @@ function cssConfig() {
       'android >= 4.4',
       'bb >= 10'
     ]) )
+    .pipe(cssbeautify())
     // .pipe(postcss([cssnext(autoprefixerBrowsers)]))  
     .pipe(minifyCSS())
     // .pipe( rename({ suffix: '.min' }) )
@@ -229,13 +239,16 @@ function cssConfig() {
 // 
 // 
 function babelConfig() {
-  return src(CONF.BABEL.SOURCE)
+  return src(CONF.BABEL.SOURCE, { sourcemaps: true })
       .pipe(babel({
         presets: [
           // '@babel/preset-react',
           '@babel/preset-env',
         ],
       }))
+      .pipe(plumber())
+      .pipe(rigger())
+      .pipe(dest(CONF.BABEL.OUTPUT))
       .pipe(uglify())
       .pipe( rename({ suffix: '.min' }) )
       .pipe(dest(CONF.BABEL.OUTPUT))
@@ -245,33 +258,47 @@ function babelConfig() {
 // 
 // 
 
-// function imageConf() {
-//   return src(CONF.IMG.SOURCE)
-//       .pipe(changed(CONF.IMG.OUTPUT))
-//       .pipe( imagemin([
-//         imagemin.gifsicle({interlaced: true}),
-//         imagemin.jpegtran({progressive: true}),
-//         imagemin.optipng({optimizationLevel: 5})
-//       ]))
-//       .pipe(dest(CONF.IMG.OUTPUT))
-// }
+function imagesConfig() {
+  return src(CONF.IMG.SOURCE)
+      // .pipe(changed(CONF.IMG.OUTPUT))
+      .pipe( imagemin(
+        // [
+        //   imagemin.gifsicle({interlaced: true}),
+        //   imagemin.jpegtran({progressive: true}),
+        //   imagemin.optipng({optimizationLevel: 5})
+        // ]
+        {
+          optimizationLevel: 3,
+          progressive: true,
+          svgoPlugins: [{removeViewBox: false}],
+          interlaced: true
+        }
+      ))
+      .pipe(dest(CONF.IMG.OUTPUT))
+}
 
 
 // -------------  LOAD LIBS
 // 
 //
-// function loadLibs() {
-//   return src([
-// 		'./app/libs/modernizr/modernizr.js',
-// 		'./app/libs/jquery/jquery-1.11.2.min.js',
-// 		'./app/libs/waypoints/waypoints.min.js',
-// 		'./app/libs/animate/animate-css.js',
-// 		'./app/libs/plugins-scroll/plugins-scroll.js',    
-//   ])
-// 		.pipe(concat('libs.js'))
-// 		.pipe(uglify()) //Minify libs.js
-//     .pipe(gulp.dest('./app/js/'));
-// }
+function libsConfig () {
+  //   return src([
+	// 	'./src/libs/modernizr/modernizr.js',    
+  // ])
+  return src(CONF.LIBS.SOURCE)
+    .pipe(concat('libs.js'))
+    .pipe(uglify())
+    .pipe( rename({ suffix: '.min' }) )
+    .pipe(dest(CONF.LIBS.OUTPUT))
+}
+
+// -------------  LOAD FONTS
+// 
+//
+function fontsConfig () {
+	return gulp.src(CONF.FONTS.SOURCE, {since: gulp.lastRun('fonts')})
+	.pipe(gulp.dest(CONF.FONTS.OUTPUT))
+}
 
 // -------------  WATCH
 // 
@@ -291,7 +318,9 @@ function watchFiles(done) {
   // watch(CONF.TS.SOURCE).on('change', series(typescriptConfig, browserReload));
   watch(CONF.BABEL.SOURCE).on('change', series(babelConfig, browserReload));
   watch(CONF.HBS.SOURCE).on('change', series(handlebarsConfig, browserReload));
-  // watch(CONF.IMG.SOURCE).on('change', series(imageConf, browserReload));
+  watch(CONF.LIBS.SOURCE).on('change', series(libsConfig, browserReload));
+  watch(CONF.FONTS.SOURCE).on('change', series(fontsConfig, browserReload));
+  watch(CONF.IMG.SOURCE).on('change', series(imagesConfig, browserReload));
 }
 
 // -------------  EXPORT COMMANDS
@@ -300,6 +329,9 @@ function watchFiles(done) {
 exports.css = cssConfig;
 exports.hbs = handlebarsConfig;
 // exports.typescript = typescriptConfig;
-// exports.imgmin = imageConf;
 exports.babel = babelConfig;
+exports.libs = libsConfig;
+exports.fonts = fontsConfig;
+exports.imgs = imagesConfig;
 exports.default = series(parallel(babelConfig, cssConfig, handlebarsConfig), series(browsersync, watchFiles)); 
+// exports.default = series(parallel(babelConfig, cssConfig, handlebarsConfig, libsConfig, fontsConfig,imagesConfig), series(browsersync, watchFiles)); 

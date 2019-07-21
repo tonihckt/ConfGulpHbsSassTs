@@ -4,7 +4,13 @@ head
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='description' content='')
   meta(name='viewport' content='width=device-width, initial-scale=1')
-  title
+	// Conf Website
+  title gulp-started
+  link(rel="icon" href="./assets/img/favicons/favicon.ico" type="image/x-icon")
+	meta(name='description', content='Start')
+  // Add Styles
+  link(rel="stylesheet" href="./assets/libs/bootstrap/bootstrap.min.css")
+	link(rel="stylesheet" href="./assets/css/style.css")
   // Disable tap highlight on IE
   meta(name='msapplication-tap-highlight' content='no')
   // Web Application Manifest
@@ -29,6 +35,8 @@ head
 // Add your site or app content here
 // build:js scripts/main.min.js
 script(src='scripts/main.js')
+script(src='./assets/libs/jQuery/jquery-3.3.1.min.js')
+script(src='./assets/js/main.js')
 // endbuild
 // Google Analytics: change UA-XXXXX-X to be your site's ID
 script.
