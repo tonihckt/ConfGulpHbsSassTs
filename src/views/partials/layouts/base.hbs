@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      {{#if title}}
+        {{title}}
+      {{else}}
+        Base Page Title
+      {{/if}}
+    </title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    {{!-- <link rel="stylesheet" href="assets/css/styles.min.css"> --}}
+    {{#> head-block}}
+      {{!-- Custom <head> content per page could be added. --}}
+        dddd
+    {{/head-block}}
+  </head>
+  <body>
+    {{#> header-block}}
+      {{!-- Header content goes here. --}}
+      <p>This is the default header der block content.</p>
+    {{/header-block}}
+
+    {{#> hero-block}}
+      {{!-- Hero content goes here. --}}
+      <p>This is the default hero block content.</p>
+      <ul>
+        <li><a href="/page-one.html">Page One</a></li>
+        <li><a href="/page-two.html">Page Two</a></li>
+      </ul>
+    {{/hero-block}}
+
+    <footer>
+      {{#> footer-block}}
+        {{!--
+          The `includes/footer` partial is the default content,
+          but can be overridden.
+        --}}
+        {{> includes/footer }}
+      {{/footer-block}}
+    </footer>
+    {{#> scripts-block}}
+    <script src="assets/js/functions.min.js"></script>
+    {{/scripts-block}}
+  </body>
+</html>

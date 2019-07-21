@@ -1,0 +1,7 @@
+ "main": "index.js",
+  "scripts": {
+    "prestart": "",
+    "start": "gulp --dev",
+    "build": "gulp"
+  },
+  "devDependencies": {},

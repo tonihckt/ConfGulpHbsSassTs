@@ -1,0 +1,39 @@
+/* FUNCTIONS */
+@import 'functions/px-to-em';
+@import 'functions/px-to-rem';
+@import 'functions/strip-units';
+@import 'functions/breakpoints';
+/* MIXINS */
+@import 'mixins/clearfix';
+@import 'mixins/responsive';
+/* LOAD FONTS */
+@import 'fonts.css';
+/* PRE _ CONFIGURATION _ BASE*/
+@import 'reset';
+@import 'variables';
+@import 'global';
+/* LOAD COMPONENTS */
+
+/* VIEWS*/
+@import 'views/home-view';
+
+
+$primary-color:#6c63ff;
+$font: 'lato';
+
+body {
+    background: $primary-color;
+    font-family: $font;
+
+    .container {
+        width: 1240px;
+        margin: auto;
+        padding: 30px;
+    }
+
+    p {
+        color: #ffffff;
+        transform: translate(50px, 50%)
+    }
+}
+
