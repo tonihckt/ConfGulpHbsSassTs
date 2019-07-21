@@ -1,4 +1,4 @@
-const projectURL = 'http://project7337.local'; // Local project URL of your already running WordPress site. Could be something like local.dev or localhost:8888.
+// const projectURL = 'http://project7337.local'; // Local project URL of your already running WordPress site. Could be something like local.dev or localhost:8888.
 //  IMPORTS
 // require('./gulp_tasks/css/sass.js');
 // require('./gulp_tasks/routes.js');
