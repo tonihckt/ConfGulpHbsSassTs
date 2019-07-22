@@ -1,0 +1,20 @@
+{{!-- [Nota] IE8 o navegador inferior
+handlebarsAdmite IE6 o posterior, 
+pero como Handlebars-Helpersutiliza una matriz, 
+indexOfse producirá un error en IE8 
+y en las versiones inferiores. 
+Correspondió por reescritura de la siguiente manera. --}}
+
+eR.add('in', function(left, right) {
+    if ( ! isArray(right)) {
+        right = right.split(',');
+    }
+    for (var i = 0, max = right.length; i < max; i++) {
+        console.log(right[i], left, right[i] === left);
+        if (right[i] === left) {
+            return true;
+            break;
+        }
+    }
+    return false;
+});

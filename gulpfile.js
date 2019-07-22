@@ -25,6 +25,8 @@ const concat = require('gulp-concat');
 const plumber = require('gulp-plumber');
 const rigger  = require('gulp-rigger');
 const coffee = require('gulp-coffee');
+//  REQUIRES _ PHP ()
+const twig = require('gulp-twig');
 //  REQUIRES _ UTILS
 const autoprefixer = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
@@ -51,8 +53,8 @@ const CONF = {
       OUTPUT : './public/assets/fonts',
     },  
     IMG :{
-      // SOURCE : './src/img/*',
       SOURCE : './src/img/**/*.{gif,jpg,jpeg,png,svg}',
+      // SOURCE : './images/**/*.+(jpg|jpeg|JPG|png|PNG|gif|GIF)',
       OUTPUT : './public/assets/img',
     }, 
     SASS : {
@@ -79,6 +81,11 @@ const CONF = {
     PHP : {
       SOURCE : './src/views/**/*.php',
       OUTPUT : './public/',
+    },
+    TWIG: {
+      SOURCE : './src/_marckup/twig/**/*.twig',
+      OUTPUT : './public/',
+      EXCLUDE: '!./src/_marckup/src/twig/**/_*.twig',
     },
     // PUG : {
     //     SOURCE : './src/_marckup/pug/**/*.pug',
@@ -172,6 +179,7 @@ function handlebarsConfig() {
 //       )
 //       .pipe(dest(CONF.PUG.OUTPUT))
 // }
+
 
 // -------------  AUTOPREFIXER _ BROWSERS
 const autoprefixerBrowsers = [
