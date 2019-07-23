@@ -1,40 +1,43 @@
-/* FUNCTIONS */
+/* FUNCTIONS  ---------------------------------------- */
 @import 'functions/px-to-em';
 @import 'functions/px-to-rem';
 @import 'functions/strip-units';
 @import 'functions/breakpoints';
-/* MIXINS */
+
+/* MIXINS  ---------------------------------------- */
 @import 'mixins/clearfix';
 @import 'mixins/responsive';
-/* LOAD FONTS */
-// @import 'fonts';
-/* PRE _ CONFIGURATION _ BASE*/
+
+/* LOAD FONTS ---------------------------------------- */
+@import 'fonts';
+
+/* PRE _ CONFIGURATION _ BASE ---------------------------------------- */
 @import 'reset';
 @import 'variables';
 @import 'global';
-/* LOAD COMPONENTS */
-@import 'components/main/sections/slider/slider';
 
-/* VIEWS*/
-@import 'views/home-view';
+/* LOAD _ LIBRARIES ---------------------------------------- */
+// @import '../libs/bootstrap/scss/bootstrap';
+// @import '../libs/bootstrap/scss/bootstrap-grid';
 
+/* LOAD COMPONENTS ---------------------------------------- */
+@import 'components/header/header';
+@import 'components/main/sections/hero/hero';
+@import 'components/main/sections/articles/portfolio';
+@import 'components/main/sections/articles/events';
+@import 'components/main/sections/contact/contact';
+@import 'components/footer/footer';
 
-$primary-color:#6c63ff;
-$font: 'lato';
+/* MEDIAQUERY ---------------------------------------- */
+/* desktop first que empieces desde el MQ más grande */
+@import 'mediaquery/mediaquery';
 
-body {
-    background: $primary-color;
-    font-family: $font;
+/* VIEWS ---------------------------------------- */
+// @import 'views/home-view';
 
-    .container {
-        width: 1240px;
-        margin: auto;
-        padding: 30px;
-    }
-
-    p {
-        color: #ffffff;
-        transform: translate(50px, 50%)
-    }
-}
-
+  
+ 
+  
+ 
+   
+  

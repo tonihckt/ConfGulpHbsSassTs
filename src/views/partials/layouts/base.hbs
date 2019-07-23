@@ -8,44 +8,48 @@
         WEBSITE
       {{/if}}
     </title>
+{{!-- 
+# STYLESHEETS
+--}}
     <link rel="stylesheet" href="assets/css/styles.css">
     {{!-- <link rel="stylesheet" href="assets/css/styles.min.css"> --}}
+    {{!-- <link rel="stylesheet" href="libs/bootstrap/dist/bootstrap.css"> --}}
     {{#> head-block}}
     {{!-- stylesheetsLibs content goes here. --}}
     {{> includes/stylesheetsLibs }}
     {{/head-block}}
   </head>
   <body>
-{{!-- 
-// ------------- HEADER
---}}   
-    {{#> header-block}}
-      {{!-- Header content goes here. --}}
-      {{> components/header/navbar }}
-    {{/header-block}}
 
-{{!--
-// ------------- MAIN
---}} 
+{{!-- 
+# HEADER
+--}}
+      {{#> header-block}}
+        {{!-- Footer content goes here. --}}
+        {{> components/header/header }}
+      {{/header-block}}
+      
+{{!-- --- 
+# MAIN
+---  --}} 
     {{#> main-block}}
       {{!--Main content goes here. --}}
       {{> components/main/main }}
     {{/main-block}}
 
-{{!-- 
-// ------------- FOOTER 
---}}
-    <footer>
+{{!-- --- 
+# FOOTER 
+--- --}}
       {{#> footer-block}}
         {{!-- Footer content goes here. --}}
         {{> components/footer/footer }}
       {{/footer-block}}
-    </footer>
 
-{{!-- 
-// ------------- SCRIPTS
---}}
+{{!-- --- 
+# SCRIPTS
+--- --}}
     <script src="assets/js/functions.min.js"></script>
+    {{!-- // ------------- libs --}}
     {{#> scripts-block}}
     {{!-- scriptsLibs content goes here. --}}
     {{> includes/scriptsLibs }}

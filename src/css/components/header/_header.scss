@@ -1,0 +1,40 @@
+// --- 
+// # 
+// ---
+@import 'hamburger';
+@import 'navbar';
+
+.header {
+    background-color: #1b2127;
+    color: white;
+    display: flex;
+    height: 70px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .header a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .menu {
+    height: inherit;
+  }
+  
+  .header {
+    ol {
+      display: flex;
+      height: inherit;
+      li {
+        height: inherit;
+      }
+    }
+    a {
+      display: flex;
+      align-items: center;
+      height: inherit;
+      padding: 0 10px;
+    }
+  }

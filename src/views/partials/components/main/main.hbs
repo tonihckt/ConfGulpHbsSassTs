@@ -1,10 +1,101 @@
 {{!-- 
 // ------------- SECTION _ HERO
 --}}
-
+<section class="hero">
+      <div class="container">
+        <div class="greeting" id="greeting-template" text="text/x-handlebars-template"></div>
+        <h1>
+          Hola! Soy <strong>{{name}}</strong> <br/> Desarrollador  <strong>{{programming-language}}</strong> con <br> pasión por la <strong>{{passion-life}}</strong>
+        </h1>
+        <img class="hero-image" src="img/hero/hero.jpg" width="500" height="300" alt="imagen principal del sitio"> 
+        {{!-- <img src="{{hero-src}}" alt="{{hero-alt}}"/> --}}
+      </div>
+</section>
 
 {{!-- 
-// ------------- SECTION _ SLIDER
+// ------------- SECTION _ PORTFOLIO
+--}}
+<section id="portafolio" class="portfolio">
+  <div class="container">
+    <h2>Portafolio (Proyectos Destacados)</h2>
+
+      <article class="project">
+        <div class="project-details">
+          <h3 class="project-title">Video App</h3>
+          <h6 class="project-course">React Native / React</h6>
+          <p class="project-date"><small><strong>Fecha:</strong> 01/07/2018</small></p>
+          <p class="project-url"><small><strong>Puedes verlo en:</strong> www.appvi.com</small></p>
+          <p class="project-description">Appvi fue el resultado de 3 meses de trabajo
+              para crear la mejor app para enseñar el funcionamiento
+              de React y React Native. Desde crear un vista-detalle, hasta patrones avanzados de nevegación, este proyecto ha sido el ejemplo de futuros creadores de aplicaciones multiplataforma</p>
+        </div>
+        <figure class="project-imageContainer">
+          <img class="project-image" width="500" src="img/video-app-react-native.png" alt="proyecto aplicacion de videos">
+        </figure>
+      </article> 
+
+{{!-- 
+// ------------- SECTION _ EVENTS
+--}}
+<section id="eventos" class="event-list">
+    <div class="container">
+
+        <article class="event">
+          <figure class="event-imageContainer">
+            <img class="event-image" src="img/event-conf.jpg" width="500" />
+          </figure>
+          <div class="event-detail">
+            <h3 class="event-title">Evento Barcelona 2018</h3>
+            <p class="event-description">El evento más grande sobre gente que quiere aprender más de internet. En esté evento te comparto como tener una vida de constante aprendizaje.</p>
+            <a class="event-url" href="#" target="_blank">Ver Plática</a>
+          </div>
+        </article>
+
+        <article class="event">
+          <figure class="event-imageContainer">
+            <img class="event-image" src="img/event-conf.jpg" width="500" />
+          </figure>
+          <div class="event-detail">
+            <h3 class="event-title">Evento Barcelona 2018</h3>
+            <p class="event-description">El evento más grande sobre gente que quiere aprender más de internet. En esté evento te comparto como tener una vida de constante aprendizaje.</p>
+            <a class="event-url" href="#" target="_blank">Ver Plática</a>
+          </div>
+        </article>
+        
+        {{!-- <article class="event">
+          <figure class="event-imageContainer">
+            <div class="flexible-video">
+              <iframe class="youtube-video" width="560" height="315" src="https://www.youtube.com/watch?v=nnKCxKgzMWU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <!-- <img class="event-image" src="images/platzi-conf.jpg" width="500" /> -->
+          </figure>
+          <div class="event-detail">
+            <h3 class="event-title">PlatziConf México 2018</h3>
+            <p class="event-description">El evento más grande sobre gente que quiere aprender más de internet. En esté evento te comparto como tener una vida de constante aprendizaje.</p>
+            <a class="event-url" href="https://www.youtube.com/watch?v=nnKCxKgzMWU" target="_blank">Ver Plática</a>
+          </div>
+        </article> --}}
+        
+
+    </div>
+</section>
+
+{{!-- 
+// ------------- SECTION _ CONTACT
 --}}
 
-<P>AQUI VA EL CUERPO</P>
+<section id="contacto" class="contact">
+      <div class="container">
+        <form action="/suscripcion/" class="form-email">
+          <h3>¿Creamos algo juntos?</h3>
+          <input type="text" placeholder="Déjame tu email" id="email">
+          <button>Enviar</button>
+        </form>
+        <div class="social">
+          <a href="https://twitter.com" class="social-link twitter"></a>
+          <a href="https://facebook.com" class="social-link facebook"></a>
+          <a href="https://github.com" class="social-link github"></a>
+          <a href="https://instagram.com" class="social-link instagram"></a>
+        </div>
+      </div>
+</section>

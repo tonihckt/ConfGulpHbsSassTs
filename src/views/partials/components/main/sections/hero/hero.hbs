@@ -1,13 +1,10 @@
-<div class="hero">
-  <img src="{{hero-src}}" alt="{{hero-alt}}"/>
-</div>
-
-{{!-- <div class="greeting"></div>
-<script id="greeting-template" text="text/x-handlebars-template">
-  <p>Hola! Soy {{name}} y vivo en {{city}}</p>
-</script> --}}
-
-{{!-- <div class="entry"> 
-  <h1>{{name}}</h1> 
-  <div>{{quote}}</div> 
-</div> --}}
+<section class="hero">
+      <div class="container">
+        <div class="greeting" id="greeting-template" text="text/x-handlebars-template"></div>
+        <h1>
+          Hola! Soy <strong>{{name}}</strong> <br/> Desarrollador  <strong>{{programming-language}}</strong> con <br> pasión por la <strong>{{passion-life}}</strong>
+        </h1>
+        <img class="hero-image" src="img/hero/hero.jpg" width="500" height="300" alt="imagen principal del sitio"> 
+        {{!-- <img src="{{hero-src}}" alt="{{hero-alt}}"/> --}}
+      </div>
+</section>

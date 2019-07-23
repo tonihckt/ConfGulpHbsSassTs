@@ -1,0 +1,82 @@
+
+  @media screen and (max-width: 767px) {
+    h2 {
+      font-size: 1.2em;
+      margin: .5em 0;
+    }
+    .burger-button {
+      display: block;
+    }
+    .header {
+      display: block;
+      height: auto;
+      ol {
+        display: block;
+        li {
+          height: 50px;
+        }
+      }
+      a {
+        justify-content: center;
+        height: 40px;
+        font-size: 2em;
+        text-decoration: underline;
+        margin-bottom: .5em;
+      }
+      .logo {
+        text-align: center;
+      }
+    }
+    .menu {
+      position: fixed;
+      background: rgba(5, 111, 255, 0.9);
+      z-index: 3;
+      top: 0;
+      left: -100vw;
+      width: 100vw;
+      /* height: 100vh; */
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .3s;
+      &.is-active {
+        left: 0;
+      }
+    }
+    .project {
+      display: block;
+    }
+    .project-imageContainer {
+      width: auto;
+      text-align: center;
+    }
+    .project-details {
+      width: auto;
+      /* font-size: 10px; */
+    }
+    .project-course, .project-date, .project-url {
+      margin: .3em 0;
+    }
+    .project-title {
+      font-size: 1.5em;
+      margin-bottom: .3em;
+    }
+    .project-url {
+      font-size: 1em;
+    }
+    .project-course {
+      font-size: .7em;
+    }
+    .project-date, .project-description {
+      font-size: 1em;
+    }
+    .event {
+      width: auto;
+      flex-shrink: initial;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  

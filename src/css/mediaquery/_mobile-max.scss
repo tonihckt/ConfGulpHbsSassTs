@@ -1,0 +1,38 @@
+@media screen and (max-width: 480px) {
+    h1 {
+      font-size: 1.5em;
+    }
+    .project-details {
+      font-size: 14px;
+    }
+    .event-detail {
+      /* 1em = 16px */
+      margin: -2em .5em .5em;
+      padding: 1em;
+    }
+    .contact {
+      height: auto;
+      padding: 1.5em 0;
+      text-align: center;
+      display: block;
+    }
+    .form-email {
+      button {
+        margin: 1em auto;
+      }
+      h3 {
+        margin-top: 0;
+      }
+    }
+    .footer {
+      display: block;
+      text-align: center;
+      border: 1px solid transparent;
+    }
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background-size: 100%;
+    }
+  }
+  
