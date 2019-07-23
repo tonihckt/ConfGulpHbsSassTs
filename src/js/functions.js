@@ -1,8 +1,10 @@
 console.log('hey! the functions has been loaded! ;)');
 
-// --- 
-// # LOAD - SCRIPT
-// ---
+/**
+* ------------------------------------------------------------------------
+* LOAD - SCRIPT
+* ------------------------------------------------------------------------
+**/
 
 function loadScript(file, callback)
 {   
@@ -21,7 +23,7 @@ function loadScript(file, callback)
 // }      
 };
 
-loadScript("assets/js/hamburger.js", MyFileLoaded);
+loadScript("assets/js/functions/hamburger.js", MyFileLoaded);
 function MyFileLoaded(){
     // console.log('Hamburger script has been loaded! ;)');
 }
@@ -30,15 +32,8 @@ function MyFileLoaded(){
 //     document.write('<script src="assets/js/hamburger.js" type="text/javascript"><\/script>');
 //   }
 
-// --- 
-// # GREETING
-// ---
-// greeting function
-// (function(){
-//     var theScriptHtml = document.getElementById('greeting-template').innerHTML;
-//     var theTemplate = Handlebars.compile(theScriptHtml)
-//     var contextObj = {name:"Toni", city:"Barcelona"};
-//     var compiledData = theTemplate(contextObj);
-
-//     document.getElementById('greeting').innerHTML = compiledData
-// })
+/**
+* ------------------------------------------------------------------------
+* WRITE A FUNCTION BUT BETTER INCLUDE IT ;)
+* ------------------------------------------------------------------------
+**/
