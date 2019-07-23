@@ -1,15 +1,38 @@
-// class Main{
-//     init():void {
-//       console.log("Hello Typescript")
-//     }
-// }
+console.log('hey! the functions has been loaded! ;)');
 
-// var main = new Main();
-// main.init();
+// --- 
+// # LOAD - SCRIPT
+// ---
 
-console.log('Hola! soyjjhh');
-// import('slider.js');
+function loadScript(file, callback)
+{   
+    // if (jQuery.browser.msie) {//Si el navegador es IE
+    //     document.write('<script charset="utf-8" type="text/javascript" src="'+file+'"></script>');
+    // } else {//Para el  resto
+    var script = document.createElement('script');
+    var footer = document.getElementsByTagName('footer')[0];
+    // var footer = document.querySelector('footer');
+    script.type = 'text/javascript';
+    script.charset = 'utf-8';
+    script.src = file;
+    script.onreadystatechange = callback;
+    script.onload = callback;
+    footer.appendChild(script);        
+// }      
+};
 
+loadScript("assets/js/hamburger.js", MyFileLoaded);
+function MyFileLoaded(){
+    // console.log('Hamburger script has been loaded! ;)');
+}
+
+// if (!window.jQuery) {
+//     document.write('<script src="assets/js/hamburger.js" type="text/javascript"><\/script>');
+//   }
+
+// --- 
+// # GREETING
+// ---
 // greeting function
 // (function(){
 //     var theScriptHtml = document.getElementById('greeting-template').innerHTML;
@@ -19,31 +42,3 @@ console.log('Hola! soyjjhh');
 
 //     document.getElementById('greeting').innerHTML = compiledData
 // })
-
-// function loadScript(url, callback){
-//     var head = document.getElementsByTagName('head')[0];
-//     var script = document.createElement('script');
-//     script.type = 'text/javascript';
-//     script.src = url;
-//     script.onreadystatechange = callback;
-//     script.onload = callback;
-//     head.appendChild(script);
-// }
-
-// loadScript('./hamburger.js', MiArchivoCargado);
-// function MiArchivoCargado(){
-//     alert('hamburger.js ya ha sido cargado');
-// }
-
-// function importarScript(nombre, callback) {
-//     var s = document.createElement("script");
-//     s.onload = callback;
-//     s.src = nombre;
-//     document.querySelector("head").appendChild(s);
-// }
-// importarScript("hamburger.js", scriptCargado);
-// x = 4;
-// function scriptCargado() { 
-//     console.log(x); 
-// }
-
