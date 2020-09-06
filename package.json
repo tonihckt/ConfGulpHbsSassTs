@@ -35,7 +35,7 @@
     "gulp-typescript": "^5.0.1",
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
-    "handlebars": "^4.1.2",
+    "handlebars": "^4.5.3",
     "minifycss": "^1.0.1",
     "postcss-preset-env": "^6.7.0",
     "typescript": "^3.5.3"
